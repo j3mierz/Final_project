@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Register</h2>
+    <h3>{{ error }}</h3>
+    <form method="POST">
+        <p><input type="text" name="username" placeholder="username"></p>
+        <p><input type="password" name="password" placeholder="password"></p>
+        <p><input type="password" name="password2" placeholder="repeat password"></p>
+
+        {% csrf_token %}
+        <button type="submit">Create</button>
+    </form>
+     <p>already have account? <a href='{% url "login_view" %}'>Login</a></p>
+{% endblock %}
