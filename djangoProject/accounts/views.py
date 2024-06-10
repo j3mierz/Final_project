@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views import View
@@ -34,3 +34,9 @@ class RegisterView(View):
             user.save()
             return redirect('login_view')
         return render(request, "accounts/register_view.html", {'error': "passwords do not match"})
+
+
+class LogoutView(View):
+    def post(self, request):
+        logout(request)
+        return redirect('login_view')
