@@ -1,0 +1,10 @@
+<div class="top_bar">
+    <div>
+        {% if user.is_authenticated %}
+            Welcome {{ user }}
+        {% else %}
+            <a href="{% url 'register' %}">zarejestruj</a>
+            <a href="{% url 'login' %}">zaloguj</a>
+        {% endif %}
+    </div>
+</div>
