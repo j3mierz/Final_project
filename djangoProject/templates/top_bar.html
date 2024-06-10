@@ -2,9 +2,13 @@
     <div>
         {% if user.is_authenticated %}
             Welcome {{ user }}
+            <form method="post" action="{% url 'logout_view' %}">
+            {% csrf_token %}
+            <button type="submit">logout</button>
+            </form>
         {% else %}
-            <a href="{% url 'register' %}">zarejestruj</a>
-            <a href="{% url 'login' %}">zaloguj</a>
+            <a href="{% url 'register_view' %}">register</a>
+            <a href="{% url 'login_view' %}">login</a>
         {% endif %}
     </div>
 </div>
