@@ -1,13 +1,28 @@
-
 .top_bar {
     display: flex;
-    justify-content: center;
-    background-color: beige;
+    justify-content: space-around;
+    background-image: url("background_2.png");
     margin: 10px;
     flex-direction: row;
+    border-radius: 10px;
+}
+.logo {
+
+    width: 300px;
+    height: 70px;
 }
 
 body {
     text-align: center;
     background-image: url("background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 26px;
+    color: #050525;
+}
+
+button, a {
+    background-color: rgb(227, 194, 83);
+    border-radius: 10px;
+    font-size: 26px;
 }
