@@ -7,7 +7,6 @@
     border-radius: 10px;
 }
 .logo {
-
     width: 300px;
     height: 70px;
 }
@@ -25,4 +24,10 @@ button, a {
     background-color: rgb(227, 194, 83);
     border-radius: 10px;
     font-size: 26px;
+}
+button:hover {
+    background-image: url("buttonhover.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
