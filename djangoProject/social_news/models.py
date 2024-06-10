@@ -7,7 +7,7 @@ class Profile(models.Model):
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
 
-class Group(models.Model):
+class Community(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     user_creator = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -16,7 +16,7 @@ class Group(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    group = models.ForeignKey(Group, on_delete=models.CASCADE)
+    Community = models.ForeignKey(Community, on_delete=models.CASCADE)
     body = models.TextField()
     user_creator = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
