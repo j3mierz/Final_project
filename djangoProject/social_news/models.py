@@ -11,7 +11,7 @@ class Community(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     user_creator = models.ForeignKey(User, on_delete=models.CASCADE)
-    users = models.ManyToManyField(User)
+    users = models.ManyToManyField(User, related_name='users_in_community')
 
 
 class Post(models.Model):
@@ -34,4 +34,3 @@ class Message(models.Model):
     body = models.TextField()
     to_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='to_me')
     created_at = models.DateTimeField(auto_now_add=True)
-
