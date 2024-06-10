@@ -1,5 +1,6 @@
 <div class="top_bar">
-    <div class="top_bar">
+    {% load static %}
+    <img class=logo src="{% static 'logo.png' %}">
         {% if user.is_authenticated %}
             <form method="post" action="{% url 'logout_view' %}">
             {% csrf_token %}
@@ -9,7 +10,7 @@
             <div>
            <a href="{% url 'login_view' %}"><button>login</button></a>
            <a href="{% url 'register_view' %}"><button>register</button></a>
-            </div>  
+            </div>
         {% endif %}
     </div>
 </div>

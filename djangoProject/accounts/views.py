@@ -16,7 +16,7 @@ class LoginView(View):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('login_view')
+            return redirect('start_page')
         return render(request, 'accounts/login_view.html', {"error": "Invalid username or password."})
 
 
