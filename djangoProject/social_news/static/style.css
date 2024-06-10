@@ -1,7 +1,7 @@
 .top_bar {
     display: flex;
     justify-content: space-around;
-    background-image: url("background_2.png");
+    background-image: url("bl_red_cyan.png");
     margin: 10px;
     flex-direction: row;
     border-radius: 10px;

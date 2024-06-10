@@ -9,5 +9,5 @@
         {% csrf_token %}
         <button type="submit">Log in</button>
     </form>
-     <p>don't have account yet? <a href='{% url "register_view" %}'>register</a></p>
+     <p>don't have account yet? <a href="{% url 'register_view' %}"><button>register</button></a>
 {% endblock %}
