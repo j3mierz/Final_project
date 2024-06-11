@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 {% for community in communities %}
-   <a  href="{% url "community_detail_view" community.id %}" > <button class="community_tile">
+    <a href="{% url 'community_detail_view' community.id%}">
+    <div class="community_tile">
+        
             <p>{{ community.name }}</p>
             <p class="description">{{ community.description }}</p>
-        
-    </button>
+       
+    </div>
     </a>
-    {% endfor %}
+     {% endfor %}
 {% endblock %}

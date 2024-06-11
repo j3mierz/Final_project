@@ -5,8 +5,8 @@ from django.views import View
 from django.views.generic import TemplateView
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
 
-from social_news.forms import AddCommunityForm
-from social_news.models import Community
+from social_news.forms import AddCommunityForm, AddPostForm
+from social_news.models import Community, Post
 
 
 # Create your views here.
@@ -37,3 +37,20 @@ class CommunityDetailView(LoginRequiredMixin, View):
     def get(self, request, pk):
         community = Community.objects.get(id=pk)
         return render(request, "social_news/community_detail_view.html", {'community': community})
+
+
+class AddPostView(LoginRequiredMixin, CreateView):
+    def get(self, request, pk):
+        form = AddPostForm
+        return render(request, "social_news/form.html", {'form': form})
+
+    def post(self, request, pk):
+        form = AddPostForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data['title']
+            description = form.cleaned_data['body']
+            user_creator = request.user
+            community = Community.objects.get(id=pk)
+            Post.objects.create(title=title, body=description, user_creator=user_creator, Community=community)
+            return redirect('community_detail_view', pk=community.id)
+        return render(request, "social_news/form.html", {'form': form})

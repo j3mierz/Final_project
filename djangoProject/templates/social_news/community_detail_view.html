@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-    {{ community.description }}
+        {{ community.description }} <br>
+    <a href="{% url 'add_post_view' community.id%}"><button>post new post</button></a><br>
+    
+
     
 {% endblock %}

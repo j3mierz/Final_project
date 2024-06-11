@@ -29,7 +29,7 @@ body {
 }
 
 button {
-    background-color: rgb(227, 194, 83);
+    background-color: rgb(74, 194, 189);
     border-radius: 10px;
     font-size: 26px;
 }
@@ -38,4 +38,7 @@ button:hover {
     background-repeat: no-repeat;
     background-size: cover;
 
+}
+
+.form_style {
 }
