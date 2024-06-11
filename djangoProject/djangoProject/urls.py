@@ -19,12 +19,13 @@ from django.contrib.auth.views import LogoutView
 from django.urls import path
 
 from accounts.views import LoginView, RegisterView
-from social_news.views import StartPageView
+from social_news.views import StartPageView, CreateCommunityView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', LoginView.as_view(), name='login_view'),
     path('register/', RegisterView.as_view(), name='register_view'),
     path('logout/', LogoutView.as_view(), name='logout_view'),
-    path('start_page/', StartPageView.as_view(), name='start_page')
+    path('start_page/', StartPageView.as_view(), name='start_page'),
+    path('add_community/', CreateCommunityView.as_view(), name='add_community')
 ]

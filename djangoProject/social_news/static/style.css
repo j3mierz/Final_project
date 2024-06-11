@@ -1,8 +1,7 @@
 .top_bar {
+    background-image: url("bl_red_cyan.png");
     display: flex;
     justify-content: space-around;
-    background-image: url("bl_red_cyan.png");
-    margin: 10px;
     flex-direction: row;
     border-radius: 10px;
 }
@@ -20,7 +19,7 @@ body {
     color: #050525;
 }
 
-button, a {
+button {
     background-color: rgb(227, 194, 83);
     border-radius: 10px;
     font-size: 26px;
