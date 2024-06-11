@@ -21,6 +21,7 @@ class CreateCommunityView(CreateView):
     def get(self, request):
         form = AddCommunityForm
         return render(request, "social_news/form.html", {'form': form})
+
     def post(self, request):
         form = AddCommunityForm(request.POST)
         if form.is_valid():
@@ -30,3 +31,9 @@ class CreateCommunityView(CreateView):
             Community.objects.create(name=name, description=description, user_creator=user_creator)
             return redirect('start_page')
         return render(request, "social_news/form.html", {'form': form})
+
+
+class CommunityDetailView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        community = Community.objects.get(id=pk)
+        return render(request, "social_news/community_detail_view.html", {'community': community})
