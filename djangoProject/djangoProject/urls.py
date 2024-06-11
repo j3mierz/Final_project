@@ -19,7 +19,7 @@ from django.contrib.auth.views import LogoutView
 from django.urls import path
 
 from accounts.views import LoginView, RegisterView
-from social_news.views import StartPageView, CreateCommunityView, CommunityDetailView, AddPostView
+from social_news.views import StartPageView, CreateCommunityView, CommunityDetailView, AddPostView, PostDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,5 +29,6 @@ urlpatterns = [
     path('start_page/', StartPageView.as_view(), name='start_page'),
     path('add_community/', CreateCommunityView.as_view(), name='add_community'),
     path('community_detail_view/<int:pk>/', CommunityDetailView.as_view(), name='community_detail_view'),
-    path('community_detail_view/<int:pk>/add_post', AddPostView.as_view(), name='add_post_view')
+    path('community_detail_view/<int:pk>/add_post', AddPostView.as_view(), name='add_post_view'),
+    path('post_detail/<int:pk>', PostDetailView.as_view(), name='post_detail')
 ]

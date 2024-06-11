@@ -3,6 +3,7 @@
         {{ community.description }} <br>
     <a href="{% url 'add_post_view' community.id%}"><button>post new post</button></a><br>
     {% for post in posts %}
+        <a href="{% url "post_detail" post.id%}">
     <div class="post_tile">
         <h1>{{ post.title }}</h1><br>
      {{ post.user_creator }}<br>
@@ -10,8 +11,5 @@
         <div class="description">{{ post.body }}</div><br>
     </div>
     {% endfor %}
-   
-
-
     
 {% endblock %}
