@@ -36,7 +36,9 @@ class CreateCommunityView(CreateView):
 class CommunityDetailView(LoginRequiredMixin, View):
     def get(self, request, pk):
         community = Community.objects.get(id=pk)
-        return render(request, "social_news/community_detail_view.html", {'community': community})
+        posts = Post.objects.filter(Community=community)
+        return render(request, "social_news/community_detail_view.html", {'community': community,
+                                                                          'posts': posts})
 
 
 class AddPostView(LoginRequiredMixin, CreateView):

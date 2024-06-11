@@ -16,7 +16,7 @@
     border-radius: 10px;
 }
 .description {
-    font-size: 15px;
+    font-size: 25px;
 
 }
 body {
@@ -40,5 +40,14 @@ button:hover {
 
 }
 
-.form_style {
+.post_tile {
+    text-align: left;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(93, 23, 10, 0.76);
+    border-radius: 10px;
+    margin: 20px;
+    padding: 10px;
 }
+
