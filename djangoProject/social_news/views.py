@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
@@ -10,9 +11,10 @@ from social_news.models import Community
 
 # Create your views here.
 
-class StartPageView(View):
+class StartPageView(LoginRequiredMixin, View):
     def get(self, request):
-        return render(request, 'social_news/start_page.html')
+        communities = Community.objects.all()
+        return render(request, 'social_news/start_page.html', {'communities': communities})
 
 
 class CreateCommunityView(CreateView):

@@ -2,6 +2,7 @@
     {% load static %}
     <img class=logo src="{% static 'logo.png' %}">
         {% if user.is_authenticated %}
+            <div><a href="{% url 'start_page' %}"><button>main page</button></a></div>
             <form method="post" action="{% url 'logout_view' %}">
             {% csrf_token %}
             <button type="submit">logout</button>

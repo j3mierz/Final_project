@@ -1,4 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-START page
+    <button class="community_tile">
+        {% for community in communities %}
+            <p>{{ community.name }}</p>
+            <p class="description">{{ community.description }}</p>
+        {% endfor %}
+    </button>
+    
 {% endblock %}
