@@ -1,11 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.files.storage import default_storage
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import TemplateView
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
 
-from social_news.forms import AddCommunityForm, AddPostForm
+from social_news.forms import AddCommunityForm, AddPostForm, AddProfileForm
 from social_news.models import Community, Post, Comment, Profile
 
 
@@ -79,13 +80,16 @@ class PostDetailView(LoginRequiredMixin, View):
 
 class UserProfileView(LoginRequiredMixin, View):
     def get(self, request):
-        return render(request, "social_news/user_profile.html")
-    def post(self, request):
-        picture = request.POST.get('picture')
-        user = request.user
-        Profile.objects.filter(user=request.user).delete()
-        Profile.objects.create(image=picture, user=user)
         profile = Profile.objects.get(user=request.user)
-        return render(request, "social_news/user_profile.html", {'profile': profile})
+        form = AddProfileForm()
+        return render(request, "social_news/user_profile.html", {'profile': profile,
+                                                                 'form': form})
 
-
+    def post(self, request):
+        form = AddProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            Profile.objects.get(user=request.user).delete()
+            profile = request.FILES['profile']
+            Profile.objects.create(user=request.user, image=profile).save()
+            return redirect('start_page')
+        return render(request, "social_news/user_profile.html", {'form': form})

@@ -4,7 +4,7 @@ from django.db import models
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
-    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    image = models.ImageField(upload_to="social_news/files/profiles")
 
 
 class Community(models.Model):

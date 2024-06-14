@@ -12,7 +12,7 @@
 
 .community_tile {
     background: url("container_side.png");
-    color: #00f5f5;
+    color: rgba(14, 110, 222, 0.63);
     border-radius: 10px;
 }
 .description {
@@ -20,16 +20,17 @@
 
 }
 body {
-    text-align: center;
     background-image: url("background_2.png");
+    text-align: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     font-size: 26px;
     color: #050525;
 }
 
 button {
-    background-color: rgb(74, 194, 189);
+    background-color: rgb(10, 243, 43);
     border-radius: 10px;
     font-size: 26px;
 }
@@ -61,3 +62,10 @@ button:hover {
     padding: 10px;
 }
 
+
+.profile_picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    border-color: #bb1818;
+}

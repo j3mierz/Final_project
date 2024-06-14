@@ -1,6 +1,7 @@
 from django import forms
+from django.forms import ModelForm
 
-from social_news.models import Community, Post
+from social_news.models import Community, Post, Profile
 
 
 class AddCommunityForm(forms.ModelForm):
@@ -9,7 +10,11 @@ class AddCommunityForm(forms.ModelForm):
         fields = ['name', 'description']
 
 
-class AddPostForm(forms.ModelForm):
+class AddPostForm(forms.Form):
     class Meta:
         model = Post
         fields = ['title', 'body']
+
+
+class AddProfileForm(forms.Form):
+    profile = forms.ImageField(required=True)

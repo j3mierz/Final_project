@@ -7,6 +7,7 @@
     
     {% for comment in comments %}
         <div class="comment">
+        <img class="profile_picture" src="{{ Profile_ctx.image }}">
         {{ comment.user_creator }}
         {{ comment.created_at }}<br>
         {{ comment.body }}
@@ -15,7 +16,7 @@
     
     <form method="post">
     {% csrf_token %}
-        <input type="text" name="comment" placeholder="write comment">
+        <input type="text" name="comment" placeholder="write comment" required>
         <input type="submit">
     
     </form>

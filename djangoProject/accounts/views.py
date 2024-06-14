@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views import View
+from social_news.models import Profile
 
 
 # Create your views here.
@@ -32,6 +33,8 @@ class RegisterView(View):
             user = User(username=username)
             user.set_password(password)
             user.save()
+            login(request, user)
+            Profile.objects.create(user=request.user, image="files/profiles/default.png")
             return redirect('login_view')
         return render(request, "accounts/register_view.html", {'error': "passwords do not match"})
 
