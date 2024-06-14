@@ -14,10 +14,10 @@
     background: url("container_side.png");
     color: rgba(14, 110, 222, 0.63);
     border-radius: 10px;
+
 }
 .description {
     font-size: 25px;
-
 }
 body {
     background-image: url("background_2.png");
@@ -46,10 +46,11 @@ button:hover {
     word-wrap: break-word;
     display: flex;
     flex-direction: column;
-    background-color: rgba(93, 23, 10, 0.76);
+    background-color: rgba(40, 136, 13, 0.76);
     border-radius: 10px;
     margin: 20px;
     padding: 10px;
+    max-block-size: 900px;
 }
 .comment{
     text-align: left;
@@ -68,4 +69,27 @@ button:hover {
     height: 150px;
     border-radius: 100px;
     border-color: #bb1818;
+}
+
+.profile_picture_smaller {
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    border-color: #630079;
+}
+
+
+.text {
+    text-align: left;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(192, 185, 185);
+    border-radius: 10px;
+    margin: 20px;
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
 }

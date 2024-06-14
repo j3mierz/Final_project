@@ -1,16 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
-        <h1>{{ post.title }}</h1>
-     {{ post.user_creator }}<br>
+            <div class="post_tile">
+
+         {% for pic in Profile_CTX %}
+                {% if pic.user == post.user_creator %}
+                    <img class="profile_picture_smaller" src="../../{{ pic.image }}">
+                {% endif %}
+            {% endfor %}
+    {{ post.user_creator }}<br>
     {{ post.created_at }}<br>
-    {{ post.body }}
+        <h1>{{ post.title }}</h1><br>
+            {% if post.user_creator == user %}
+        <div><a href="{% url 'update_post' post.id%}"><button>EDIT POST</button></a></div>
+    {% endif %}
+        </div>
+    
+    <div class="text">{{ post.body }}</div>
     
     {% for comment in comments %}
         <div class="comment">
-        <img class="profile_picture" src="{{ Profile_ctx.image }}">
+        {% for pic in Profile_CTX %}
+                {% if pic.user == comment.user_creator %}
+                    <img class="profile_picture_smaller" src="../../{{ pic.image }}">
+                {% endif %}
+            {% endfor %}
         {{ comment.user_creator }}
         {{ comment.created_at }}<br>
-        {{ comment.body }}
+
+            <div class="text">{{ comment.body }}</div>
         </div>
     {% endfor %}
     

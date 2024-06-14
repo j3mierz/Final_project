@@ -34,8 +34,8 @@ class RegisterView(View):
             user.set_password(password)
             user.save()
             login(request, user)
-            Profile.objects.create(user=request.user, image="files/profiles/default.png")
-            return redirect('login_view')
+            Profile.objects.create(user=request.user, image="social_news/files/profiles/default.png")
+            return redirect('start_page')
         return render(request, "accounts/register_view.html", {'error': "passwords do not match"})
 
 

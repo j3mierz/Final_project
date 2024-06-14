@@ -46,7 +46,7 @@ class CommunityDetailView(LoginRequiredMixin, View):
 
 class AddPostView(LoginRequiredMixin, CreateView):
     def get(self, request, pk):
-        form = AddPostForm
+        form = AddPostForm(request.POST)
         return render(request, "social_news/form.html", {'form': form})
 
     def post(self, request, pk):
@@ -93,3 +93,12 @@ class UserProfileView(LoginRequiredMixin, View):
             Profile.objects.create(user=request.user, image=profile).save()
             return redirect('start_page')
         return render(request, "social_news/user_profile.html", {'form': form})
+
+
+class UpdatePostView(LoginRequiredMixin, UpdateView):
+    model = Post
+    fields = ['title', 'body']
+    template_name = "social_news/form.html"
+
+    def get_success_url(self):
+        return reverse_lazy('post_detail', args=(self.get_object().pk,))

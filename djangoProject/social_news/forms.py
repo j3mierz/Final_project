@@ -10,7 +10,7 @@ class AddCommunityForm(forms.ModelForm):
         fields = ['name', 'description']
 
 
-class AddPostForm(forms.Form):
+class AddPostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'body']
