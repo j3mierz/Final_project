@@ -102,3 +102,9 @@ class UpdatePostView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('post_detail', args=(self.get_object().pk,))
+
+
+class DeletePostView(LoginRequiredMixin, DeleteView):
+    model = Post
+    template_name = "social_news/delete_form.html"
+    success_url = reverse_lazy('start_page')

@@ -1,27 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
         {{ community.description }} <br>
-    
+
     <a href="{% url 'add_post_view' community.id%}"><button>post new post</button></a><br>
     {% for post in posts %}
-        <a href="{% url "post_detail" post.id%}">
-    <div class="post_tile">
-    
-         {% for pic in Profile_CTX %}
+         <div class="post_tile">
+        {% if community.user_creator == user %}
+             <div><a href="{% url 'delete_post' post.id%}"><button>DELETE POST</button></a></div>
+    {% endif %}
+          {% for pic in Profile_CTX %}
                 {% if pic.user == post.user_creator %}
                     <img class="profile_picture_smaller" src="../../{{ pic.image }}">
                 {% endif %}
-            {% endfor %}    
+            {% endfor %}
+        <a href="{% url "post_detail" post.id%}">
     {{ post.user_creator }}<br>
     {{ post.created_at }}<br>
         <h1>{{ post.title }}</h1><br>
      {% if post.user_creator == user %}
         <div><a href="{% url 'update_post' post.id%}"><button>EDIT POST</button></a></div>
     {% endif %}
-     
+
         <div class="text">{{ post.body }}</div><br>
-    </div>
         </a>
+    </div>
+        
     {% endfor %}
-    
+
 {% endblock %}

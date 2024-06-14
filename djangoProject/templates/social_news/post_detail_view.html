@@ -19,6 +19,7 @@
     
     {% for comment in comments %}
         <div class="comment">
+        
         {% for pic in Profile_CTX %}
                 {% if pic.user == comment.user_creator %}
                     <img class="profile_picture_smaller" src="../../{{ pic.image }}">
