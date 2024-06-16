@@ -15,7 +15,7 @@
             {% endfor %}
         <a href="{% url "post_detail" post.id%}">
     {{ post.user_creator }}<br>
-    {{ post.created_at }}<br>
+    {{ post.created_at|date:"d.m.Y | G:i"}}<br>
         <h1>{{ post.title }}</h1><br>
      {% if post.user_creator == user %}
         <div><a href="{% url 'update_post' post.id%}"><button>EDIT POST</button></a></div>

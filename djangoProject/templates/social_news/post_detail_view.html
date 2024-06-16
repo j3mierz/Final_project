@@ -8,7 +8,7 @@
                 {% endif %}
             {% endfor %}
     {{ post.user_creator }}<br>
-    {{ post.created_at }}<br>
+    {{ post.created_at|date:"d.m.Y | G:i"  }}<br>
         <h1>{{ post.title }}</h1><br>
             {% if post.user_creator == user %}
         <div><a href="{% url 'update_post' post.id%}"><button>EDIT POST</button></a></div>
@@ -25,8 +25,8 @@
                     <img class="profile_picture_smaller" src="../../{{ pic.image }}">
                 {% endif %}
             {% endfor %}
-        {{ comment.user_creator }}
-        {{ comment.created_at }}<br>
+        {{ comment.user_creator }}<br>
+        {{ comment.created_at|date:"d.m.Y | G:i" }}<br>
 
             <div class="text">{{ comment.body }}</div>
         </div>
