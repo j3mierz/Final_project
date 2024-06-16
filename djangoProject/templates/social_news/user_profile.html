@@ -4,11 +4,12 @@
    <img class="profile_picture" src="{{ profile.image }}">
     <h1>{{ user.username }}</h1>
     last logged :{{ user.last_login }}
-    
+    <div class="profile_form">
+    <p>Profile picture change:</p>
     <form action="{% url 'user_profile' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.profile }}
         <input type="submit" value="Upload">
             </form>
-     
+     </div>
 {% endblock %}django_content_type

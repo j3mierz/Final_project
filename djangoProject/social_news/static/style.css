@@ -93,3 +93,9 @@ button:hover {
 a {
     text-decoration: none;
 }
+
+.profile_form {
+    background-color: rgba(31, 31, 152, 0.54);
+    border-radius: 10px;
+    margin-left: 40%;
+    margin-right: 40%;
