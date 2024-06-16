@@ -108,3 +108,11 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
     model = Post
     template_name = "social_news/delete_form.html"
     success_url = reverse_lazy('start_page')
+
+
+class JoinCommunityView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        comm = Community.objects.get(id=pk)
+        comm.users.add(request.user)
+        comm.save()
+        return redirect('start_page')

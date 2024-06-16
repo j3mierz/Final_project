@@ -20,14 +20,13 @@ from django.urls import path
 
 from accounts.views import LoginView, RegisterView
 from social_news.views import StartPageView, CreateCommunityView, CommunityDetailView, AddPostView, PostDetailView, \
-    UserProfileView, UpdatePostView, DeletePostView
+    UserProfileView, UpdatePostView, DeletePostView, JoinCommunityView
 from django.conf.urls.static import static
 
 from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    ##path('login/', LoginView.as_view(), name='login_view'),
     path('accounts/login/', LoginView.as_view(), name='login_view'),
     path('register/', RegisterView.as_view(), name='register_view'),
     path('logout/', LogoutView.as_view(), name='logout_view'),
@@ -39,5 +38,6 @@ urlpatterns = [
     path('user_profile', UserProfileView.as_view(), name='user_profile'),
     path('update_post/<int:pk>/', UpdatePostView.as_view(), name='update_post'),
     path('delete_post/<int:pk>/', DeletePostView.as_view(), name='delete_post'),
+    path('joincomm/<int:pk>/', JoinCommunityView.as_view(), name='join_comm'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

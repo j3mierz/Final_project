@@ -6,7 +6,9 @@
         
             <p>{{ community.name }}</p>
             <p class="description">{{ community.description }}</p>
-       
+        {% if community.user_creator != user %}
+       <a href="{% url 'join_comm' community.id%}"><button>Join community</button></a>
+        {% endif %}
     </div>
     </a>
      {% endfor %}

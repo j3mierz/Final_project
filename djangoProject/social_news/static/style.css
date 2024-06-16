@@ -11,8 +11,8 @@
 }
 
 .community_tile {
-    background: url("container_side.png");
-    color: rgba(14, 110, 222, 0.63);
+    background-color: rgba(106, 17, 110, 0.55);
+    color: rgba(236, 61, 61, 0.97);
     border-radius: 10px;
 
 }
@@ -95,7 +95,8 @@ a {
 }
 
 .profile_form {
-    background-color: rgba(31, 31, 152, 0.54);
+    background-color: rgba(46, 46, 171, 0.54);
     border-radius: 10px;
     margin-left: 40%;
     margin-right: 40%;
+}
