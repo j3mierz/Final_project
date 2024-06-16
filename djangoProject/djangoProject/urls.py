@@ -27,10 +27,11 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', LoginView.as_view(), name='login_view'),
+    ##path('login/', LoginView.as_view(), name='login_view'),
+    path('accounts/login/', LoginView.as_view(), name='login_view'),
     path('register/', RegisterView.as_view(), name='register_view'),
     path('logout/', LogoutView.as_view(), name='logout_view'),
-    path('start_page/', StartPageView.as_view(), name='start_page'),
+    path('', StartPageView.as_view(), name='start_page'),
     path('add_community/', CreateCommunityView.as_view(), name='add_community'),
     path('community_detail_view/<int:pk>/', CommunityDetailView.as_view(), name='community_detail_view'),
     path('community_detail_view/<int:pk>/add_post', AddPostView.as_view(), name='add_post_view'),

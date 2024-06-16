@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views import View
 from social_news.models import Profile
@@ -17,6 +18,8 @@ class LoginView(View):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
+            if next == "":
+                return HttpResponseRedirect('/')
             return redirect('start_page')
         return render(request, 'accounts/login_view.html', {"error": "Invalid username or password."})
 

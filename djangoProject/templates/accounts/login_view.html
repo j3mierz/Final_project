@@ -2,7 +2,7 @@
 {% block content %}
     <h2>Login</h2>
     <h3>{{ error }}</h3>
-    <form method="POST">
+    <form action="/accounts/login/" method="POST">
         <p><input type="text" name="username" placeholder="usernane"></p>
         <p><input type="password" name="password" placeholder="Haslo"></p>
        
