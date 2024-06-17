@@ -1,9 +1,11 @@
 <div class="top_bar">
     {% load static %}
-    <img class=logo src="{% static 'logo.png' %}">
+    <img class=logo src="{% static 'cad826af5ee95bbc39d3bd498e1a8301.jpg' %}">
+
         {% if user.is_authenticated %}
              <a href="{% url 'add_community' %}"><button>create community</button></a>
             <div><a href="{% url 'start_page' %}"><button>main page</button></a></div>
+            <a href="{% url 'messages' %}"><button>messages</button></a>
             {% for pic in Profile_CTX %}
                 {% if pic.user == user %}
                   <a href="{% url 'user_profile' %}"><img class="profile_picture_smaller" src="/{{ pic.image }}"></a>
@@ -19,6 +21,7 @@
             <div>
            <a href="{% url 'login_view' %}"><button>login</button></a>
            <a href="{% url 'register_view' %}"><button>register</button></a>
+             
             </div>
         {% endif %}
     </div>

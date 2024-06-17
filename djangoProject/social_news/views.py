@@ -26,6 +26,7 @@ class StartPageView(LoginRequiredMixin, View):
             return render(request, 'social_news/start_page.html', {'message': message})
         return render(request, 'social_news/start_page.html', {'communities': comm_search})
 
+
 class CreateCommunityView(CreateView):
     def get(self, request):
         form = AddCommunityForm
@@ -132,3 +133,8 @@ class JoinCommunityView(LoginRequiredMixin, View):
         comm.users.add(request.user)
         comm.save()
         return redirect('start_page')
+
+
+class MessagesView(LoginRequiredMixin, TemplateView):
+    def get(self, request):
+        return render(request, "social_news/messages_view.html")
