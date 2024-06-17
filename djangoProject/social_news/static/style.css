@@ -1,26 +1,49 @@
 .top_bar {
-    background-image: url("bl_red_cyan.png");
+    background-color: #f3ad00;
     display: flex;
     justify-content: space-around;
     flex-direction: row;
-    border-radius: 10px;
+    border-radius: 4px;
+    margin-right: 2%;
+    margin-left: 2%;
 }
 .logo {
+    margin: 10px;
     width: 300px;
     height: 70px;
 }
 
 .community_tile {
-    background-color: rgba(106, 17, 110, 0.55);
-    color: rgba(236, 61, 61, 0.97);
-    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px 5% 10px 5%;
+    background-color: rgba(255, 255, 255, 0);
+    color: rgba(81, 91, 196, 0.97);
+    border-radius: 4px;
+    border-bottom:  1px solid rgba(145, 145, 145, 0.25);
 
 }
+.background_tile {
+    background-color: rgba(128, 128, 128, 0.41);
+     display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 20% 0 20%;
+     rgba(0,0,0,0.17)
+    border-radius: 4px;
+
+}
+.community_tile:hover {
+    background-color: rgba(157, 154, 154, 0.64);
+
+}
+
 .description {
     font-size: 25px;
 }
 body {
-    background-image: url("background_2.png");
+    background-color: #ffffff;
     text-align: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -30,14 +53,14 @@ body {
 }
 
 button {
-    background-color: rgb(10, 243, 43);
-    border-radius: 10px;
+    margin: 10px;
+    background-color: rgba(33, 143, 203, 0.5);
+    border-radius: 4px;
     font-size: 26px;
 }
 button:hover {
-    background-image: url("buttonhover.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+    color: #000000;
+    background-color: #ffffff;
 
 }
 
@@ -46,8 +69,8 @@ button:hover {
     word-wrap: break-word;
     display: flex;
     flex-direction: column;
-    background-color: rgba(40, 136, 13, 0.76);
-    border-radius: 10px;
+    background-color: #f3ad00;
+    border-radius: 4px;
     margin: 20px;
     padding: 10px;
     max-block-size: 900px;
@@ -58,7 +81,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     background-color: rgba(42, 62, 147, 0.76);
-    border-radius: 10px;
+    border-radius: 4px;
     margin: 20px;
     padding: 10px;
 }
@@ -67,15 +90,17 @@ button:hover {
 .profile_picture {
     width: 150px;
     height: 150px;
-    border-radius: 100px;
-    border-color: #bb1818;
+    border-radius: 100%;
+    border-color: #a8658f;
+    margin: 10px;
 }
 
 .profile_picture_smaller {
     width: 70px;
     height: 70px;
     border-radius: 50px;
-    border-color: #630079;
+    border-color: rgba(99, 0, 121, 0);
+    margin: 10px;
 }
 
 
@@ -85,7 +110,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     background-color: rgb(192, 185, 185);
-    border-radius: 10px;
+    border-radius: 4px;
     margin: 20px;
     padding: 10px;
 }
@@ -96,7 +121,81 @@ a {
 
 .profile_form {
     background-color: rgba(46, 46, 171, 0.54);
-    border-radius: 10px;
+    border-radius: 4px;
     margin-left: 40%;
     margin-right: 40%;
 }
+
+input[type=text], input[type=password] {
+
+  width: 50%;
+  padding: 12px 20px;
+  margin: 10px 50px 20px;
+    border: 2px solid #cc822d;
+  border-radius: 4px;
+    background-color: palegoldenrod;
+}
+
+input[type=submit] {
+    background-color: #2461a9; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+    border-radius: 4px;
+}
+
+input[type=submit]:hover {
+    background-color: #2b9b0d;
+}
+
+textarea {
+  width: 80%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border:  2px solid #cc822d;
+  border-radius: 4px;
+  background-color: palegoldenrod;
+  resize: none;
+}
+
+.box {
+    padding: 10px;
+    border-radius: 4px;
+}
+.container {
+            display: flex;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: rgba(45, 45, 45, 0.44);
+            color: #fff;
+            box-sizing: border-box;
+            position: fixed;
+            overflow-y: scroll;
+            max-height: 100%;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            margin-left: 200px;
+            text-align: center;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+
+        }
+
+        .sidebar a:hover {
+            background-color: #2980b9;
+        }

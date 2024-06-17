@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+    <div style="background-color: rgba(0,0,0,0.17); margin: 0 20% 0 20%; padding: 10px; border-radius: 4px">
    <img class="profile_picture" src="{{ profile.image }}">
     <h1>{{ user.username }}</h1>
-    last logged :{{ user.last_login }}
+    last logged :{{ user.last_login }}<br>
+    joined :{{ user.date_joined }}
     <div class="profile_form">
     <p>Profile picture change:</p>
     <form action="{% url 'user_profile' %}" method="post" enctype="multipart/form-data">
@@ -12,4 +14,22 @@
         <input type="submit" value="Upload">
             </form>
      </div>
+    
+     <p style="font-weight:  bold; "  >You are admin of:</p>
+    <ul>
+        {% for community in communities %}
+            {% if community.user_creator == user %}
+            <a href="{% url 'community_detail_view' community.id%}"><li style="margin: 10px 50% 10px 45%;">{{ community.name }}</li></a>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    
+    
+    <p style="font-weight:  bold; "  >You are member of:</p>
+    <ul>
+        {% for community in joined %}
+            <a href="{% url 'community_detail_view' community.id%}"><li style="margin: 10px 50% 10px 45%;">{{ community.name }}</li></a>
+        {% endfor %}
+    </ul>
+    </div>
 {% endblock %}django_content_type

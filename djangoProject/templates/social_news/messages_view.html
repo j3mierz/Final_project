@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+           {% for user in users %}
+            {% for pic in Profile_CTX %}
+                {% if pic.user == user %}
+                    <a style="text-align: left" ><img  class="profile_picture_smaller" src="../../{{ pic.image }}">
+                {% endif %}
+
+            {% endfor %}
+               {{ user.username }}
+                </a>
+            {% endfor %}
+         <a style="text-align: left" ><img  class="profile_picture_smaller" src="../../social_news/files/profiles/default.png">
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <div>
+                
+            </div>
+    </div>
+
+{% endblock %}django_content_type

@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.core.files.storage import default_storage
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -15,16 +16,22 @@ from social_news.models import Community, Post, Comment, Profile
 class StartPageView(LoginRequiredMixin, View):
     def get(self, request):
         communities = Community.objects.all()
-
-        return render(request, 'social_news/start_page.html', {'communities': communities})
+        users = User.objects.all()
+        return render(request, 'social_news/start_page.html', {'communities': communities,
+                                                               'users': users})
 
     def post(self, request):
+        users = User.objects.all()
         search = request.POST.get('search')
         comm_search = Community.objects.filter(name__iregex=f'{search}')
         if len(comm_search) == 0:
             message = "no such community"
-            return render(request, 'social_news/start_page.html', {'message': message})
-        return render(request, 'social_news/start_page.html', {'communities': comm_search})
+            return render(request, 'social_news/start_page.html', {'message': message,
+                                                                   'users': users})
+
+        return render(request, 'social_news/start_page.html', {'communities': comm_search,
+                                                               'users': users})
+
 
 
 class CreateCommunityView(CreateView):
@@ -137,4 +144,7 @@ class JoinCommunityView(LoginRequiredMixin, View):
 
 class MessagesView(LoginRequiredMixin, TemplateView):
     def get(self, request):
-        return render(request, "social_news/messages_view.html")
+        users = User.objects.all()
+        return render(request, "social_news/messages_view.html", {'users': users})
+
+

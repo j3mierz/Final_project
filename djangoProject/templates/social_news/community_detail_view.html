@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
         {{ community.description }} <br>
-
+    {% if community.user_creator != user and joined == "false" %}
+       <a href="{% url 'join_comm' community.id%}"><button>Join community</button></a>
+        {% endif %}
     <a href="{% url 'add_post_view' community.id%}"><button>post new post</button></a><br>
     {% for post in posts %}
          <div class="post_tile">
