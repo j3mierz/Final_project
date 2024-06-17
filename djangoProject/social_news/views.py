@@ -15,6 +15,7 @@ from social_news.models import Community, Post, Comment, Profile
 class StartPageView(LoginRequiredMixin, View):
     def get(self, request):
         communities = Community.objects.all()
+
         return render(request, 'social_news/start_page.html', {'communities': communities})
 
 
@@ -39,9 +40,13 @@ class CommunityDetailView(LoginRequiredMixin, View):
         community = Community.objects.get(id=pk)
         posts = Post.objects.filter(Community=community)
         profile = Profile.objects.get(user=request.user)
+        joined = 'false'
+        if len(Community.objects.filter(id=pk, users=request.user)) > 0:
+            joined = 'true'
         return render(request, "social_news/community_detail_view.html", {'community': community,
                                                                           'posts': posts,
-                                                                          'profile': profile})
+                                                                          'profile': profile,
+                                                                          'joined': joined})
 
 
 class AddPostView(LoginRequiredMixin, CreateView):
@@ -82,8 +87,10 @@ class UserProfileView(LoginRequiredMixin, View):
     def get(self, request):
         profile = Profile.objects.get(user=request.user)
         form = AddProfileForm()
+        communities = Community.objects.all()
         return render(request, "social_news/user_profile.html", {'profile': profile,
-                                                                 'form': form})
+                                                                 'form': form,
+                                                                 'communities': communities})
 
     def post(self, request):
         form = AddProfileForm(request.POST, request.FILES)
