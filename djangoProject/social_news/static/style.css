@@ -199,3 +199,7 @@ textarea {
         .sidebar a:hover {
             background-color: #2980b9;
         }
+
+.message{
+    background: #050525;
+}

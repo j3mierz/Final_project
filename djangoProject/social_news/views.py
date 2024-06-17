@@ -6,9 +6,9 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import TemplateView
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
-
+from django.db.models import Q
 from social_news.forms import AddCommunityForm, AddPostForm, AddProfileForm
-from social_news.models import Community, Post, Comment, Profile
+from social_news.models import Community, Post, Comment, Profile, Message
 
 
 # Create your views here.
@@ -31,7 +31,6 @@ class StartPageView(LoginRequiredMixin, View):
 
         return render(request, 'social_news/start_page.html', {'communities': comm_search,
                                                                'users': users})
-
 
 
 class CreateCommunityView(CreateView):
@@ -143,8 +142,23 @@ class JoinCommunityView(LoginRequiredMixin, View):
 
 
 class MessagesView(LoginRequiredMixin, TemplateView):
-    def get(self, request):
-        users = User.objects.all()
-        return render(request, "social_news/messages_view.html", {'users': users})
+    def get(self, request, pk):
+        users = User.objects.all().exclude(id=request.user.id)
+        to_user = User.objects.get(id=pk)
+        messages = Message.objects.filter((Q(from_user=to_user) & Q(to_user=request.user)) | (
+                    Q(to_user=to_user) & Q(from_user=request.user))).order_by('created_at')
+        return render(request, "social_news/messages_view.html", {'users': users,
+                                                                  'to_user': to_user,
+                                                                  'to_user_profile': Profile.objects.get(user=to_user),
+                                                                  'messages': messages})
 
-
+    def post(self, request, pk):
+        users = User.objects.all().exclude(id=request.user.id)
+        to_user = User.objects.get(id=pk)
+        message = request.POST.get('message')
+        Message.objects.create(from_user=request.user, body=message, to_user=to_user)
+        messages = Message.objects.filter((Q(from_user=to_user) & Q(to_user=request.user)) | (Q(to_user=to_user) & Q(from_user=request.user))).order_by('created_at')
+        return render(request, "social_news/messages_view.html", {'users': users,
+                                                                  'to_user': to_user,
+                                                                  'to_user_profile': Profile.objects.get(user=to_user),
+                                                                  'messages': messages})

@@ -4,14 +4,14 @@
     <div class="container">
         <!-- Sidebar -->
         <div class="sidebar">
-           {% for user in users %}
+           {% for u in users %}
             {% for pic in Profile_CTX %}
-                {% if pic.user == user %}
-                    <a style="text-align: left" ><img  class="profile_picture_smaller" src="../../{{ pic.image }}">
+                {% if pic.user == u %}
+                    <a href="{% url 'messages' u.id%}#bottom" style="text-align: left" ><img  class="profile_picture_smaller" src="../../{{ pic.image }}">
                 {% endif %}
 
             {% endfor %}
-               {{ user.username }}
+               {{ u.username }}
                 </a>
             {% endfor %}
          <a style="text-align: left" ><img  class="profile_picture_smaller" src="../../social_news/files/profiles/default.png">
@@ -20,8 +20,24 @@
         <!-- Main Content -->
         <div class="content">
             <div>
-                
+                 <a style="text-align: left" ><img  class="profile_picture_smaller" src="../../{{ to_user_profile.image }}"><br>
+                 {{ to_user.username }}<br>
+               {% for message in messages %}
+                   {% if message.to_user == user %}
+                     <div class="message" style="text-align: left; background: #2980b9;">{{ message.body }}</div><br>
+                      {% else %}
+                       <div class="message" style="text-align: right; background: #b92929;">{{ message.body }}</div><br>
+                   {% endif %}
+                   
+                     {% endfor %}
+                <form method="post" style="background: #24501a ">
+                    {% csrf_token %}
+                    <input type="text" name="message" placeholder="message" required="">
+                    <input id="bottom" type="submit" value="send">
+                    
+                </form>
+                     
             </div>
     </div>
-
+    
 {% endblock %}django_content_type

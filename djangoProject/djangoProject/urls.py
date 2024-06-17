@@ -39,6 +39,6 @@ urlpatterns = [
     path('update_post/<int:pk>/', UpdatePostView.as_view(), name='update_post'),
     path('delete_post/<int:pk>/', DeletePostView.as_view(), name='delete_post'),
     path('joincomm/<int:pk>/', JoinCommunityView.as_view(), name='join_comm'),
-    path('messages', MessagesView.as_view(), name='messages'),
+    path('messages/<int:pk>/', MessagesView.as_view(), name='messages'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
