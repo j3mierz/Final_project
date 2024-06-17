@@ -18,6 +18,13 @@ class StartPageView(LoginRequiredMixin, View):
 
         return render(request, 'social_news/start_page.html', {'communities': communities})
 
+    def post(self, request):
+        search = request.POST.get('search')
+        comm_search = Community.objects.filter(name__iregex=f'{search}')
+        if len(comm_search) == 0:
+            message = "no such community"
+            return render(request, 'social_news/start_page.html', {'message': message})
+        return render(request, 'social_news/start_page.html', {'communities': comm_search})
 
 class CreateCommunityView(CreateView):
     def get(self, request):
@@ -88,9 +95,11 @@ class UserProfileView(LoginRequiredMixin, View):
         profile = Profile.objects.get(user=request.user)
         form = AddProfileForm()
         communities = Community.objects.all()
+        joined = Community.objects.filter(users=request.user)
         return render(request, "social_news/user_profile.html", {'profile': profile,
                                                                  'form': form,
-                                                                 'communities': communities})
+                                                                 'communities': communities,
+                                                                 'joined': joined})
 
     def post(self, request):
         form = AddProfileForm(request.POST, request.FILES)

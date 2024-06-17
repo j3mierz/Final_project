@@ -1,15 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
-{% for community in communities %}
-    <a href="{% url 'community_detail_view' community.id%}">
+    
+    <form method="post">
+         {% csrf_token %}
+  <input type="text" placeholder="Search.." name="search">
+      <button type="submit">search</button>
+ </form>
+    
+    <div class="background_tile"> 
+     {{ message }}
+        {% for community in communities %}
     <div class="community_tile">
+    <a href="{% url 'community_detail_view' community.id%}">
+   
         
             <p>{{ community.name }}</p>
             <p class="description">{{ community.description }}</p>
-        {% if community.user_creator != user %}
-       <a href="{% url 'join_comm' community.id%}"><button>Join community</button></a>
-        {% endif %}
+        
     </div>
     </a>
      {% endfor %}
+    </div>
 {% endblock %}
