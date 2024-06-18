@@ -1,5 +1,5 @@
 .top_bar {
-    background-color: #f3ad00;
+    background-color: #463e2b;
     display: flex;
     justify-content: space-around;
     flex-direction: row;
@@ -68,7 +68,7 @@ button:hover {
     word-wrap: break-word;
     display: flex;
     flex-direction: column;
-    background-color: #f3ad00;
+    background-color: #8c6b27;
     border-radius: 4px;
     margin: 20px;
     padding: 10px;

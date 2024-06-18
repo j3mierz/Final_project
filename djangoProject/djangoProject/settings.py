@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "social_news.apps.SocialNewsConfig",
     "accounts.apps.AccountsConfig",
+    "pytest",
 
 ]
 
