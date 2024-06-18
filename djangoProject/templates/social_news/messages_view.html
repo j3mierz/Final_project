@@ -7,9 +7,9 @@
            {% for u in users %}
             {% for pic in Profile_CTX %}
                 {% if pic.user == u %}
-                    <a href="{% url 'messages' u.id%}#bottom" style="text-align: left" ><img  class="profile_picture_smaller" src="../../{{ pic.image }}">
+                    <a {% if to_user == u  %} style="background-color: #2b9b0d "{% endif %} href="{% url 'messages' u.id%}#bottom" style="text-align: left" ><img  class="profile_picture_smaller" src="../../{{ pic.image }}">
                 {% endif %}
-
+        
             {% endfor %}
                {{ u.username }}
                 </a>
@@ -24,16 +24,16 @@
                  {{ to_user.username }}<br>
                {% for message in messages %}
                    {% if message.to_user == user %}
-                     <div class="message" style="text-align: left; background: #2980b9;">{{ message.body }}</div><br>
+                     <div class="message_left"><span>{{ message.body }}</span></div><br>
                       {% else %}
-                       <div class="message" style="text-align: right; background: #b92929;">{{ message.body }}</div><br>
+                       <div class="message_right"><span>{{ message.body }}</span></div><br>
                    {% endif %}
                    
                      {% endfor %}
-                <form method="post" style="background: #24501a ">
+                <form method="post" action="{% url 'messages' to_user.id%}#bottom" style="background: #24501a ">
                     {% csrf_token %}
-                    <input type="text" name="message" placeholder="message" required="">
-                    <input id="bottom" type="submit" value="send">
+                    <input type="text" id="bottom" name="message" placeholder="message" required="">
+                    <input  type="submit" value="send">
                     
                 </form>
                      

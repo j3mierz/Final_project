@@ -3,9 +3,8 @@
     display: flex;
     justify-content: space-around;
     flex-direction: row;
-    border-radius: 4px;
-    margin-right: 2%;
-    margin-left: 2%;
+    border-radius: 1px;
+
 }
 .logo {
     margin: 10px;
@@ -54,7 +53,7 @@ body {
 
 button {
     margin: 10px;
-    background-color: rgba(33, 143, 203, 0.5);
+    background-color: rgba(156, 198, 220, 0.5);
     border-radius: 4px;
     font-size: 26px;
 }
@@ -200,6 +199,34 @@ textarea {
             background-color: #2980b9;
         }
 
-.message{
-    background: #050525;
+.message_left {
+    text-align: left;
+
 }
+
+.message_right {
+    text-align: right;
+
+}
+
+.message_right span{
+    background: #2980b9;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.message_left span{
+    padding: 5px;
+    background: #b92929;
+    border-radius: 4px;
+}
+.top_message {
+            justify-content: center;
+            display: flex;
+            width: 80%;
+            background-color: rgba(160, 208, 65, 0.44);
+            color: #fff;
+            position: fixed;
+            max-height: 100%;
+            border-radius: 4px;
+        }
