@@ -192,7 +192,7 @@ def test_user_profile_view_post(users, profiles):
     for user in users:
         client = Client()
         client.login(username=user.username, password=user.password)
-        image = SimpleUploadedFile("test_image.jpg", b"file_content", content_type="image/jpeg")
+        image = "test_image.jpg"
         data = {
             'profile': image,
         }
